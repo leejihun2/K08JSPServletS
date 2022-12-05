@@ -39,7 +39,7 @@ String favoStr = "";
 	String intro = request.getParameter("intro").replace("\r\n", "<br/>");
 %>
 <ul>
-	<li>아이디 : <%= id%></li>
+	<li>아이디 : <input type="text" value = <%= id%> ></li>
 	<li>성별 : <%= sex %></li>
 	<li>관심사항 : <%= favoStr %></li>
 	<li>자기소개 : <%= intro %></li>

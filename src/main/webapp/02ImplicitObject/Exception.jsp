@@ -24,6 +24,7 @@ else if (status == 500) {
 }
 %>
 <br />
-<img src="../images/Error.jpg" alt="오류" />
+<!-- <img src="../images/Error.jpg" alt="오류" /> -->
+<img src="../images/da1a426384e0e.jpg" alt="오류" />
 </body>
 </html>

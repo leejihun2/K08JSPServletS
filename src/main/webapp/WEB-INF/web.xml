@@ -36,7 +36,7 @@
   개발시에는 에러를 확인한 후 디버깅하면서 진행해야 하므로
   개발이 완료될때까지는 주석으로 처리해 두는것이 좋다.
    -->
-  <error-page>
+<!--   <error-page>
   <error-code>404</error-code>
   <location>/02ImplicitObject/Exception.jsp</location>
   </error-page>
@@ -47,5 +47,5 @@
   <error-page>
   <error-code>500</error-code>
   <location>/02ImplicitObject/Exception.jsp</location>
-  </error-page>
+  </error-page> -->
 </web-app>
