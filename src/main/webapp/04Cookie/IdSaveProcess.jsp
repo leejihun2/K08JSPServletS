@@ -29,7 +29,7 @@ if ("must".equals(user_id) && "1234".equals(user_pw)){
 	//JSFunction.alertLocation("로그인에 성공했습니다.", "IdSaveMain.jsp", out);
 %>
 	<script>
-	alert("로그인에 성공했습니다."); <br />
+	alert("로그인에 성공했습니다.");
 	location.href="IdSaveMain.jsp";
 	</script>
 <%

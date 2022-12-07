@@ -30,7 +30,7 @@ if (!loginId.equals("")) {
 	부여한다.
 	-->
 	아이디 : <input type="text" name="user_id" value="<%= loginId %>" tabindex="1"/>
-		<input type="checkbox" name="Save_check" value="Y" <%= cookieCheck %>tabindex="3"/>
+		<input type="checkbox" name="save_check" value="Y" <%= cookieCheck %> tabindex="3"/>
 		아이디 저장하기
 		<br/>
 		패스워드 : <input type="text" name="user_pw"tabindex="2"/>
