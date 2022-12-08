@@ -1,5 +1,7 @@
 package common;
-
+/*
+순수하게 데이터 저장 기능만 있는 
+ */
 public class Person {
 	private String name;
 	private int age;

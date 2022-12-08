@@ -37,7 +37,8 @@ else {
 	//리퀘스트 영역에 에러메세지를 저장한다.
 	request.setAttribute("LoginErrMsg", "로그인오류입니다.");
 	//그리고 로그인 페이지로 '포워드'한다.
-	request.getRequestDispatcher("LoginForm.jsp").forward(request, response);
+	request.getRequestDispatcher("LoginForm.jsp")
+		.forward(request, response);
 	
 }
 %>
