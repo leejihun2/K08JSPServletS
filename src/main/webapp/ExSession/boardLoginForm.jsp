@@ -52,7 +52,7 @@ function validateForm(form) {
 		<label for="user_pw"></label> 
 		<input type="password" name="user_pw" style="width: 300px"><br> <button type="submit">로긩</button>
 
-	</form>	
+	</form>
 	</div>
                 
                 	<span style="color: red; font-size: 1.2em;"> <%=request.getAttribute("LoginErrMsg") == null ? "" : request.getAttribute("LoginErrMsg")%>
