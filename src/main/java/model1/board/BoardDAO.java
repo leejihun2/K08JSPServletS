@@ -1,6 +1,5 @@
 package model1.board;
 
-import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 import java.util.Vector;

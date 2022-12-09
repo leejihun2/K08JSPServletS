@@ -1,4 +1,4 @@
-package model1.board;
+package library.board;
 
 public class LibraryDTO {
 

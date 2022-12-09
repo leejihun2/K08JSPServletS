@@ -1,24 +1,22 @@
-package model1.board;
+package library.board;
 
-import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 import java.util.Vector;
 
-import javax.servlet.ServletContext;
-
 import common.JDBConnectCol;
+import model1.board.BoardDTO;
 
 public class LibraryDAO extends JDBConnectCol {
 	
-	public LibraryDAO(ServletContext application) {
-		super(application);
+	public LibraryDAO() {
+		
 	}
 	public int selectCount(Map<String, Object> map) {
 		
 		int totalCount = 0; 
 		
-		String query = "SELECT COUNT(*) FROM library";
+		String query = "SELECT COUNT(*) FROM LIBRARY";
 		if(map.get("searchWord") != null) {
 			query += " WHERE "+ map.get("searchField") + " LIKE '%"+ map.get("searchWord")+ "%'";
 		}
@@ -36,29 +34,37 @@ public class LibraryDAO extends JDBConnectCol {
 		
 		return totalCount;
 	}
-	
 	public List<LibraryDTO> selectList(Map<String, Object> map){
 		
 		List<LibraryDTO> bbs = new Vector<LibraryDTO>();
+		
+		System.out.println("=========selectList 쿼리 실행============");
 		
 		String query = "SELECT * FROM library";
 		if(map.get("searchWord") != null) {
 			query += " WHERE "+ map.get("searchField") + " LIKE '%"+ map.get("searchWord")+ "%'";
 		}
-		query += " ORDER BY num DESC ";
+		query += " ORDER BY book_code DESC ";
+		
+		System.out.println(query);
 		
 		try {
+			System.out.println("==========selectList statement 준비=================");
 			stmt = con.createStatement();
 			rs = stmt.executeQuery(query);
+			System.out.println("rs : " + rs.toString());
+			System.out.println(query);
 			
 			while (rs.next()) {
+				
+				System.out.println("================================");
 				LibraryDTO dto = new LibraryDTO();
 				
-				dto.setCode(rs.getString("code"));
-				dto.setTitle(rs.getString("title"));
-				dto.setGenre(rs.getString("genre"));
-				dto.setAuthor(rs.getString("author"));
-				dto.setStatus(rs.getString("status"));
+				dto.setCode(rs.getString("book_code"));
+				dto.setTitle(rs.getString("book_title"));
+				dto.setGenre(rs.getString("book_genre"));
+				dto.setAuthor(rs.getString("book_author"));
+				dto.setStatus(rs.getString("book_status"));
 	
 				bbs.add(dto);
 				
@@ -75,16 +81,18 @@ public class LibraryDAO extends JDBConnectCol {
 		int result = 0;
 		
 		try {
-			String query = "INSERT INTO library (code,title,genre,author,status) VALUES (?.?, ?, ?, ?)";
+			String query = "INSERT INTO library (book_code, book_genre, book_title, book_author) VALUES (?, ?, ?, ?)";
 			
 			psmt = con.prepareStatement(query);
-			psmt.setString(1, dto.getTitle());
-			psmt.setString(2, dto.getContent());
-			psmt.setString(3, dto.getId());
+			psmt.setString(1, dto.toString());
+			psmt.setString(2, dto.toString());
+			psmt.setString(3, dto.toString());
+			psmt.setString(4, dto.toString());
 			result = psmt.executeUpdate();
 		} 
 		catch (Exception e) {
 			System.out.println("게시물 입력중 예외 발생.");
+			
 			e.printStackTrace();
 		}
 		return result;

@@ -61,7 +61,7 @@
               </form>
           </li>
         </ul>
-        <ul class="navbar-nav ">
+        <ul class="navbar-nav">
             <li class="nav-item">
               <a class="nav-link" href="javascript:void(0)"><i class="bi bi-person-plus-fill"></i>회원가입</a>
             </li>
