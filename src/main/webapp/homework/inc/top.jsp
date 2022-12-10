@@ -48,7 +48,8 @@
 				href="../ExSession/boardLoginForm.jsp"><i
 					class='bi bi-box-arrow-in-right' style='font-size: 20px'></i>로그인</a></li>
 			
-			<li class="nav-item"><a class="nav-link" href="#"><i
+			<li class="nav-item"><a class="nav-link" 
+				href="../ExSession/boardRegisterForm.jsp"><i
 				class='bi bi-person-plus-fill' style='font-size: 20px'></i>회원가입</a></li>
 			
 			<% } else { %>

@@ -15,18 +15,18 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">    
 <script type="text/javascript">
 function validateForm(form) { 
-    if (form.title.value == "") {
-        alert("제목을 입력하세요.");
+    if (form.id.value == "") {
+        alert("아이디를 입력하세요.");
         form.title.focus();
         return false;
     }
-    if (form.content.value == "") {
-        alert("내용을 입력하세요.");
+    if (form.pass.value == "") {
+        alert("비밀번호을 입력하세요.");
         form.content.focus();
         return false;
     }
     if (form.name.value == "") {
-        alert("작성자를 입력하세요.");
+        alert("이름을 입력하세요.");
         form.name.readonly = false;
         return false;
 }
@@ -43,22 +43,22 @@ function validateForm(form) {
         		<%@ include file="../homework/inc/left.jsp" %>
         <div class="col-9 pt-3  d-flex justify-content-center">
         <div>
-			<form action="LoginProcess.jsp" method="post" name="loginFrm" 
+			<form action="RegisterProcess.jsp" method="post" name="loginFrm" 
 		onsubmit="return validateForm(this);">
-            <h3 class="mb-2" style="text-align: center; font-weight: bold">로그인<small>하기</small><i class="bi bi-door-open"></i></h3>
+            <h3 class="mb-2" style="text-align: center; font-weight: bold">회원가입<small>하기</small><i class="bi bi-door-open-fill"></i></h3>
 		<div class="mb-2">
-		 <input type="text" name="user_id" style="width: 300px" placeholder="아이디"><br>
+		 <input type="text" name="user_id" style="width:300px"placeholder="아이디" ><br>
 		 </div>
 		 <div class="mb-2">
-		<input type="password" name="user_pw" style="width: 300px" placeholder="패스워드"><br> 
+		<input type="password" name="user_pw" style="width:300px" placeholder="패스워드"><br> 
 		</div>
 		<div class="mb-2">
-		<button type="submit" style="width: 300px" class="btn btn-primary">로그인</button>
+		<input type="text" name="user_name" style="width:300px" placeholder="이름" ><br>
+		</div>
+		<div class="mb-2">
+		<button type="submit" style="width: 300px" class="btn btn-primary">회원가입</button>
 		</div>
 	</form>
-		<div class="mb-2">
-		<button type="submit" style="width: 300px" onclick="location.href='boardRegisterForm.jsp';" class="btn btn-primary">회원가입</button>
-		</div>
 	</div>
                 
                 	<span style="color: red; font-size: 1.2em;"> <%=request.getAttribute("LoginErrMsg") == null ? "" : request.getAttribute("LoginErrMsg")%>
@@ -79,6 +79,12 @@ function validateForm(form) {
 				form.user_pw.focus();
 				return false;
 			}
+			if (form.user_name.value == "") {
+				alert("이름을 입력하세요.");
+				form.user_pw.focus();
+				return false;
+			}
+			
 		}
 	</script>
 	

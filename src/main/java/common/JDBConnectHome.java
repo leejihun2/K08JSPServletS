@@ -21,15 +21,12 @@ public class JDBConnectHome {
 	public JDBConnectHome() {
 
 		try {
-			//오라클 드라이버 로드
 			Class.forName("oracle.jdbc.OracleDriver");
-			//커넥션URL, 계정 아이디와 패스워드 기술
 			String url = "jdbc:oracle:thin:@localhost:1521:xe";
 			String id = "musthave";
 			String pw = "1234";
 			//오라클 DB 연결
 			con = DriverManager.getConnection(url, id, pw);
-			//연결 성공시 콘솔에서 로그 확인
 			System.out.println("DB 연결 성공(기본 생성자)");
 			
 		}
@@ -38,7 +35,6 @@ public class JDBConnectHome {
 		}
 	}
 	
-	//자원 해제(반납)를 위한 메서드
 	public void close() {
 		
 		try {
@@ -54,7 +50,6 @@ public class JDBConnectHome {
 		}
 	}
 	
-	//인수생성자1 : DB연결에 필요한 모든 정보를 매개변수로 받음
 	public JDBConnectHome(String driver, String url, String id, String pwd) {
 		
 		try {
@@ -67,7 +62,6 @@ public class JDBConnectHome {
 		}
 	}
 	
-	//인수생성자2 : application내장객체 사용을 위한 매개변수 선언
 	public JDBConnectHome(ServletContext application) {
 		/*
 		JSP의 내장객체는 메서드에서는 즉시 사용할 수 없고 반드시

@@ -21,17 +21,12 @@
 	<span style="color: red; font-size: 1.2em;"> <%=request.getAttribute("LoginErrMsg") == null ? "" : request.getAttribute("LoginErrMsg")%>
 	</span>
 	<%
-	/* 세션영역에 UserId라는 속성값이 없는경우, 즉 로그인 처리가
-	되지 않은 상태에서는 로그인 폼과 검증을 위한 JS를 웹브라우저에
-	출력한다. */
 	if (session.getAttribute("UserId") == null) {
 	%>
 	<!-- 로그인 폼의 입력값을 검증하기 위한 함수로 빈값인지를
 	확인한다. -->
 	<script>
 		function validateForm(form) {
-			/* <form> 태그 하위의 각 input 태그에 입력값이 있는지
-			확인하여 만약 빈값이라면 경고창, 포커스이동, 폼값전송*/
 			if (!form.user_id.value) {
 				alert("아이디를 입력하세요.");
 				form.user_id.focus();
@@ -45,11 +40,6 @@
 			}
 		}
 	</script>
-	<!-- 
-	폼값 전송을 위한 <form>태그로 폼값을 전송할URL, 전송방식, 폼의이름,
-	submit 이벤트 리스너로 구성한다. 특히 폼값검증을 위한
-	validateForm() 함수 호출시 <form>태그의 DOM을 인수로 전달한다.
-	 -->
 	<form action="aLoginProcess.jsp" method="post" name="loginFrm"
 		onsubmit="return validateForm(this);">
 
@@ -60,8 +50,6 @@
 	</form>
 	<%
 	} else {
-		/* session영역에 저장된 속성값이 있다면 로그인 된 상태이므로
-		회원정보 및 로그아웃 버튼을 화면에 출력한다. */
 	%>
 
 	<%=session.getAttribute("UserName")%>

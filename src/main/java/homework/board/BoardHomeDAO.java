@@ -100,6 +100,28 @@ public class BoardHomeDAO extends JDBConnectHome {
 		return result;
 	}
 	
+	public int insertRegister(BoardHomeDTO dto) {
+		int result = 0;
+		
+		try {
+			
+			String query = "INSERT INTO member (id,pass,name) VALUES (?, ?, ?)";
+			
+			psmt = con.prepareStatement(query);
+			psmt.setString(1, dto.getId());
+			psmt.setString(2, dto.getPass());
+			psmt.setString(3, dto.getName()); 
+			
+			result = psmt.executeUpdate();
+		} 
+		catch (Exception e) {
+			System.out.println("게시물 입력중 예외 발생.");
+			
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
 	public BoardHomeDTO selectView(String num) {
 		
 		BoardHomeDTO dto = new BoardHomeDTO();
