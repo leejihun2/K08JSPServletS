@@ -54,7 +54,8 @@
 			
 			<% } else { %>
 			
-			<li class="nav-item"><a class="nav-link" href="#"><i
+			<li class="nav-item"><a class="nav-link" 
+				href="../ExSession/boardModifyForm.jsp"><i
 					class='bi bi-person-lines-fill' style='font-size: 20px'></i>회원정보수정</a>
 			</li>
 		

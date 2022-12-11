@@ -155,6 +155,36 @@ public class BoardHomeDAO extends JDBConnectHome {
 		
 	}
 	
+	public BoardHomeDTO selectMember(String id) {
+		
+		BoardHomeDTO dto = new BoardHomeDTO();
+		
+		String query = "SELECT id, pass, name FROM member where id=? ";
+		
+		try {
+			
+			psmt = con.prepareStatement(query);
+			psmt.setString(1, id);
+			rs= psmt.executeQuery();
+			
+			if (rs.next()) {
+				
+				dto.setId(rs.getString("id"));
+				dto.setPass(rs.getString("pass"));
+				dto.setName(rs.getString("name"));
+				
+			}
+			System.out.println(dto);
+		}
+		catch (Exception e) {
+			System.out.println("게시물 상세보기 중 예외 발생");
+			e.printStackTrace();
+		}
+		
+		return dto;
+		
+	}
+	
 	public void updateVisitCount(String num) {
 		
 		String query = "UPDATE board SET visitcount=visitcount+1 WHERE num=?";
@@ -192,6 +222,31 @@ public class BoardHomeDAO extends JDBConnectHome {
 		
 		return result;
 	}
+	
+	public int updateModify(BoardHomeDTO dto) {
+		int result = 0;
+		
+		try {
+			
+			String query = "UPDATE member SET pass=?,  name=? WHERE id=? ";
+			
+			psmt = con.prepareStatement(query);
+			
+			psmt.setString(1, dto.getPass());
+			psmt.setString(2, dto.getName());
+			psmt.setString(3, dto.getId());
+			
+			result = psmt.executeUpdate();
+			
+		} 
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	
+	
 	
 	public int deletePost (BoardHomeDTO dto) {
 		int result = 0;
