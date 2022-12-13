@@ -1,5 +1,6 @@
 package homework.board;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 import java.util.Vector;
@@ -8,6 +9,7 @@ import javax.servlet.ServletContext;
 
 import common.JDBConnect;
 import common.JDBConnectHome;
+import model1.board.BoardDTO;
 
 public class BoardHomeDAO extends JDBConnectHome {
 	
@@ -155,6 +157,30 @@ public class BoardHomeDAO extends JDBConnectHome {
 		
 	}
 	
+	public boolean  dupChkID(String id) {
+		
+		String query =" select id from member where id = ?";
+		
+		try {
+			psmt = con.prepareStatement(query);
+			psmt.setString(1, id);
+			rs= psmt.executeQuery();
+			
+			if (rs.next()) {
+				System.out.println("중복아이디 있음 : " +  rs.getString("id"));
+				return false;
+				
+			}
+			
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		System.out.println("중복아이디없음");
+		return true;
+	}
+	
 	public BoardHomeDTO selectMember(String id) {
 		
 		BoardHomeDTO dto = new BoardHomeDTO();
@@ -264,6 +290,41 @@ public class BoardHomeDAO extends JDBConnectHome {
 		}
 		
 		return result;
+	}
+	
+	public List<BoardHomeDTO> selectListPage(Map<String, Object> map){
+		List<BoardHomeDTO> bbs = new Vector<BoardHomeDTO>();
+		
+		String query = "SELECT * FROM ( SELECT Tb.*, ROWNUM rNum FROM ( SELECT * FROM board";
+		
+		if(map.get("searchWord") != null) {
+			query += " WHERE "+ map.get("searchField") + " LIKE '%"+ map.get("searchWord")+ "%'";
+		}
+		query += " ORDER BY num DESC ) Tb ) WHERE rNum BETWEEN ? AND ?";
+		
+		try {
+			psmt = con.prepareStatement(query);
+			psmt.setString(1 , map.get("start").toString());
+			psmt.setString(2 , map.get("end").toString());
+			rs = psmt.executeQuery();
+			while (rs.next()) {
+				BoardHomeDTO dto = new BoardHomeDTO();
+				dto.setNum(rs.getString("num"));
+				dto.setTitle(rs.getString("title"));
+				dto.setContent(rs.getString("content"));
+				dto.setPostdate(rs.getDate("postdate"));
+				dto.setId(rs.getString("id"));
+				dto.setVisitcount(rs.getString("visitcount"));
+	
+				bbs.add(dto);
+			}
+		} 
+		catch (Exception e) {
+			System.out.println("게시물 조회 중 예외 발생");
+			e.printStackTrace();
+		}
+		
+		return bbs;
 	}
 	
 	

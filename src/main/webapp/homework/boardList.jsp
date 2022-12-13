@@ -1,3 +1,4 @@
+<%@page import="utils.BoardHomePage2"%>
 <%@page import="homework.board.BoardHomeDTO"%>
 <%@page import="java.util.HashMap"%>
 <%@page import="java.util.Map"%>
@@ -20,7 +21,24 @@ BoardHomeDAO dao = new BoardHomeDAO(application);
     }
     int totalCount = dao.selectCount(param);
 
-    List<BoardHomeDTO> boardLists = dao.selectList(param);
+    int pageSize =
+    	Integer.parseInt(application.getInitParameter("POSTS_PER_PAGE"));
+    int blockPage = 
+    	Integer.parseInt(application.getInitParameter("PAGES_PER_BLOCK"));
+
+    int totalPage = (int)Math.ceil((double)totalCount / pageSize);
+
+    int pageNum = 1;
+    String pageTemp = request.getParameter("pageNum");
+    if (pageTemp != null && !pageTemp.equals(""))
+    	pageNum = Integer.parseInt(pageTemp);
+
+    int start = (pageNum - 1) * pageSize + 1;
+    int end = pageNum * pageSize;
+    param.put("start", start);
+    param.put("end", end);
+    
+    List<BoardHomeDTO> boardLists = dao.selectListPage(param);
 
     dao.close();
 %>
@@ -48,7 +66,8 @@ BoardHomeDAO dao = new BoardHomeDAO(application);
     	<!-- 좌측 네비게이션 인클루드 -->
         <%@ include file="./inc/left.jsp" %>
         <div class="col-9 pt-3">
-            <h3>게시판 목록 - <small>자유게시판</small></h3>
+            <h3>게시판 목록 - <small>자유게시판</small>
+            -현재 페이지 : <%= pageNum %> (전체 :<%= totalPage %>)</h3>
 
             <div class="row ">
                 <!-- 검색부분 -->
@@ -102,9 +121,11 @@ if (boardLists.isEmpty()) {
 }
 else {
     int virtualNum = 0; 
+    int countNum = 0;
     for (BoardHomeDTO dto : boardLists)
 {
-        virtualNum = totalCount--;   
+    	virtualNum = totalCount - (((pageNum - 1) * pageSize) + countNum++);
+       /*  virtualNum = totalCount--;    */
 %>
         <tr align="center">
         
@@ -139,23 +160,9 @@ else {
             <div class="row mt-3">
                 <div class="col">
                     <ul class="pagination justify-content-center">
-                        <li class="page-item">
-                            <a href="#" class="page-link"><i class='bi bi-skip-backward-fill'></i></a>
-                        </li>
-                        <li class="page-item">
-                            <a href="#" class="page-link"><i class='bi bi-skip-start-fill'></i></a>
-                        </li>
-                        <li class="page-item"><a href="#" class="page-link">1</a></li>
-                        <li class="page-item active"><a href="#" class="page-link">2</a></li>
-                        <li class="page-item"><a href="#" class="page-link">3</a></li>
-                        <li class="page-item"><a href="#" class="page-link">4</a></li>
-                        <li class="page-item"><a href="#" class="page-link">5</a></li>
-                        <li class="page-item">
-                            <a href="#" class="page-link"><i class='bi bi-skip-end-fill'></i></a>
-                        </li>
-                        <li class="page-item">
-                            <a href="#" class="page-link"><i class='bi bi-skip-forward-fill'></i></a>
-                        </li>
+                     <% System.out.println("현재경로" + request.getRequestURI()); %> 		
+        			 <%= BoardHomePage2.pagingStr(totalCount, pageSize,
+        				blockPage, pageNum, request.getRequestURI()) %>
                     </ul>
                 </div>
             </div>
