@@ -254,7 +254,9 @@ public class BoardHomeDAO extends JDBConnectHome {
 		
 		try {
 			
-			String query = "UPDATE member SET pass=?,  name=? WHERE id=? ";
+			String query = "UPDATE member SET "
+					+ " pass=?,  name=? "
+					+ " WHERE id=? ";
 			
 			psmt = con.prepareStatement(query);
 			

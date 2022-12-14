@@ -5,14 +5,14 @@
     pageEncoding="UTF-8"%>
 <%
 
-String userPwd = request.getParameter("user_pw");
-String userName = request.getParameter("user_name");
-String userId = request.getParameter("user_id");
+String userId = request.getParameter("id");
+String userPwd = request.getParameter("pass");
+String userName = request.getParameter("name");
 
 BoardHomeDTO dto = new BoardHomeDTO();
+dto.setId(userId);
 dto.setPass(userPwd);
 dto.setName(userName);
-dto.setId(userId);
 
 
 BoardHomeDAO dao = new BoardHomeDAO(application);
@@ -23,7 +23,7 @@ dao.close();
 
 if (iResult == 1) {
 	
-	JSFunction.alertLocation("회원정보수정 성공", "boardList.jsp", out);
+	JSFunction.alertLocation("회원정보수정 성공", "../homework/boardList.jsp", out);
 }
 else {
 	
