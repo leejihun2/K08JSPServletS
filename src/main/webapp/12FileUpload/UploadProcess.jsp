@@ -46,7 +46,7 @@ String encoding = "UTF-8";
 		}
 		
 		
-		response.sendRedirect("FileList.jsp");
+		ㅁㅁㅁresponse.sendRedirect("FileList.jsp");
 */		
 		
 	}
