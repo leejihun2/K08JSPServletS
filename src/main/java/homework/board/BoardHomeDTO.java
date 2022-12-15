@@ -10,17 +10,12 @@ public class BoardHomeDTO {
 	private String visitcount;
 	private String name;
 	private String pass;
+	private java.sql.Date modifydate;
 	
 	
 	
 	
-	
-	public String getPass() {
-		return pass;
-	}
-	public void setPass(String pass) {
-		this.pass = pass;
-	}
+
 	public String getNum() {
 		return num;
 	}
@@ -62,6 +57,18 @@ public class BoardHomeDTO {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public String getPass() {
+		return pass;
+	}
+	public void setPass(String pass) {
+		this.pass = pass;
+	}
+	public java.sql.Date getModifydate() {
+		return modifydate;
+	}
+	public void setModifydate(java.sql.Date modifydate) {
+		this.modifydate = modifydate;
 	}
 	
 }

@@ -25,7 +25,7 @@ public class BoardHomePage2 {
 		while (blockCount <= blockPage && pageTemp <= totalPages ) {
 			
 			if (pageTemp == pageNum) {
-				pagingStr.append("<li class='page-item active'><a class='page-link' href='"+pageTemp+"''></a></li>");
+				pagingStr.append("<li class='page-item active'><a class='page-link' href='"+pageTemp+"''>"+pageTemp+"</a></li>");
 			}
 			else {
 				
@@ -36,11 +36,10 @@ public class BoardHomePage2 {
 			blockCount++;
 		}
 		if (pageTemp <= totalPages) {
-			pagingStr.append("<a href='" + reqUrl + "?pageNum=" + pageTemp
-						+ "'>[다음 블록]</a>");
-			pagingStr.append("&nbsp;");
-			pagingStr.append("<a href='" + reqUrl + "?pageNum=" + totalPages
-						+ "'>[마지막 페이지]</a>");
+			pagingStr.append("<a class='page-link' href='" + reqUrl + "?pageNum=" + pageTemp
+						+ "'><i class='bi bi-skip-end-fill'></i></a>");
+			pagingStr.append("<a class='page-link' href='" + reqUrl + "?pageNum=" + totalPages
+						+ "'><i class='bi bi-skip-forward-fill'></i></a>");
 		}
 		
 		pagingStr.append("</ul>");

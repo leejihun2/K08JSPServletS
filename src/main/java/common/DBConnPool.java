@@ -20,6 +20,7 @@ DBCP(DataBase Connection Pool : 커넥션 풀)
 필요할때 가져다 쓰고 반납하는 기법을 말한다. DB에 부하를 줄이고
 자원을 효율적으로 관리할 수 있다.
  */
+/* DBConnPool 톰켓이 가지고 있음 */
 public class DBConnPool {
 	//멤버변수
 	public Connection con;
@@ -71,7 +72,7 @@ public class DBConnPool {
 			if(psmt != null) psmt.close(); 
 			if(con != null) con.close(); 
 			
-			System.out.println("JDBC 자원 해제");
+			System.out.println("JDBC 커넥션 풀 자원 반납");
 		} 
 		catch (Exception e) {
 			e.printStackTrace();

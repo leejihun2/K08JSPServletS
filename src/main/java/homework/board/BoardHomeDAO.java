@@ -231,7 +231,7 @@ public class BoardHomeDAO extends JDBConnectHome {
 		
 		try {
 			
-			String query = "UPDATE board SET title=?, content=? WHERE num=?";
+			String query = "UPDATE board SET title=?, content=?, modifydate=sysdate WHERE num=?";
 			
 			psmt = con.prepareStatement(query);
 			
