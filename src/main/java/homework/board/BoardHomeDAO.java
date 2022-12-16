@@ -143,6 +143,7 @@ public class BoardHomeDAO extends JDBConnectHome {
 				
 				dto.setContent(rs.getString("content"));
 				dto.setPostdate(rs.getDate("postdate"));
+				dto.setModifydate(rs.getDate("modifydate"));
 				dto.setId(rs.getString("id"));
 				dto.setVisitcount(rs.getString(6));
 				dto.setName(rs.getString("name"));
@@ -240,7 +241,7 @@ public class BoardHomeDAO extends JDBConnectHome {
 			psmt.setString(3, dto.getNum());
 			
 			result = psmt.executeUpdate();
-			
+			System.out.println(query);
 		} 
 		catch (Exception e) {
 			e.printStackTrace();

@@ -65,7 +65,17 @@ function deletePost() {
                     <th class="text-center" 
                         style="vertical-align:middle;">작성일</th>
                     <td>
-                    	 <%= dto.getPostdate() %> <small>최근수정일 : <%= dto.getModifydate() %></small>
+                    	 <%= dto.getPostdate() %>
+                    	<%
+                    	System.out.println("수정일 : " + dto.getModifydate());
+                    	 if (dto.getModifydate() != null) {
+                    	 %>
+                    	 	<small>
+                   	  		최근수정일 : <%= dto.getModifydate() %>
+                    		</small>
+                    	 <%
+                    	 }
+                    	 %>
                     </td>
                 </tr>
                 <tr>
