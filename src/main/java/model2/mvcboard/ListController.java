@@ -40,7 +40,7 @@ public class ListController extends HttpServlet {
 		/* 페이징 처리 start */
 		/*
 		서블릿에서 application내장객체를 얻어온 후 web.xml에 설정한
-		컨텍스트 ㅊ기화 파라미터를 읽어온다. 한페이지에 출력할 게시물의
+		컨텍스트 초기화 파라미터를 읽어온다. 한페이지에 출력할 게시물의
 		갯수와 한블럭당 출력할 페이지번호의 갯수이다/
 		 */
 		ServletContext application = getServletContext();
@@ -89,6 +89,10 @@ public class ListController extends HttpServlet {
 		map.put("pageSize", pageSize);
 		//현재 페이지 번호
 		map.put("pageNum", pageNum);
+		
+		map.put("totalPage", totalPage);
+		
+		
 		
 		//View로 전달할 객체들을 request영역에 저장한다.
 		req.setAttribute("boardLists", boardLists);

@@ -61,7 +61,9 @@ public class JSFunction {
                           + "</script>";
             writer.println(script);
         }
-        catch (Exception e) {}
+        catch (Exception e) {
+        	e.printStackTrace();
+        }
     }
 
     public static void alertBack(HttpServletResponse resp, String msg) {
@@ -75,7 +77,9 @@ public class JSFunction {
                           + "</script>";
             writer.println(script);
         }
-        catch (Exception e) {}
+        catch (Exception e) {
+        	e.printStackTrace();
+        }
     }
     
     
