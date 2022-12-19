@@ -54,15 +54,15 @@
 			<%@ include file="../homework/inc/left.jsp"%>
 			<div class="col-9 pt-3  d-flex justify-content-center">
 				<div>
-					<form action="RegisterProcess.jsp" method="post" name="regiFrm" id="regiFrm">
+					<form action="RegisterProcess.jsp" method="post" name="regiFrm"
+						id="regiFrm">
 						<h3 class="mb-2" style="text-align: center; font-weight: bold">
 							회원가입<small>하기</small><i class="bi bi-door-open-fill"></i>
 						</h3>
 						<div class="mb-2">
-							<input type="text" name="user_id" id="user_id" style="width: 300px"
-								placeholder="아이디">
-							<button type="button" onclick="openModal();"
-								style="width: 80px">중복확인</button>
+							<input type="text" name="user_id" id="user_id"
+								style="width: 300px" placeholder="아이디">
+							<button type="button" onclick="openModal();" style="width: 80px">중복확인</button>
 							<br>
 						</div>
 						<div class="mb-2">
@@ -95,13 +95,12 @@
 						//alert("이게실행된다이노마");
 
 						var form = document.getElementById("regiFrm");
-						
+
 						if (!form.user_id.value) {
 							alert("아이디를 입력하세요.");
 							form.user_id.focus();
 							return false;
 						}
-
 						if (!form.user_pw.value || !form.user_pw2.value) {
 							alert("비밀번호을 입력하세요.");
 							form.user_pw.focus();
@@ -119,14 +118,13 @@
 							form.user_name.focus();
 							return false;
 						}
-
 						form.submit();
-						
 					}
 				</script>
 
 				<%
-				} else {
+				} 
+				else {
 				%>
 
 				<%=session.getAttribute("UserName")%>

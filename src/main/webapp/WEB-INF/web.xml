@@ -8,7 +8,7 @@
 	<!-- 웰컴파일리스트 : 웹 애플리케이션을 실행했을때 파일명을 지정하지 않은경우 하위에 기술한 파일을 찾아 자동으로 실행한다. 
 		만약 해당 파일이 없다면 404에러가 발생하게된다. -->
 	<welcome-file-list>
-		<welcome-file>index.html</welcome-file>
+		<welcome-file>/ExSession/boardLoginForm.jsp</welcome-file>
 		<welcome-file>index.jsp</welcome-file>
 		<welcome-file>index.htm</welcome-file>
 		<welcome-file>default.html</welcome-file>

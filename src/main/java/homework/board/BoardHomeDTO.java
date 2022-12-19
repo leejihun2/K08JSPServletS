@@ -15,6 +15,8 @@ public class BoardHomeDTO {
 	
 	
 	
+	
+	
 
 	public String getNum() {
 		return num;

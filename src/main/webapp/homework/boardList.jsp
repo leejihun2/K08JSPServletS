@@ -68,7 +68,6 @@ BoardHomeDAO dao = new BoardHomeDAO(application);
         <div class="col-9 pt-3">
             <h3>게시판 목록 - <small>자유게시판</small>
             -현재 페이지 : <%= pageNum %> (전체 :<%= totalPage %>)</h3>
-
             <div class="row ">
                 <!-- 검색부분 -->
                 <form method="get">
