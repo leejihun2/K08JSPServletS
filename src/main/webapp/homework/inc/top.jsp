@@ -17,7 +17,7 @@
 		<ul class="navbar-nav ms-3">
 			<li class="nav-item"><a class="nav-link"
 				href="../homework/boardList.jsp">자유게시판</a></li>
-			<li class="nav-item"><a class="nav-link" href="#">자료실</a></li>
+			<li class="nav-item"><a class="nav-link" href="#">나의 글</a></li>
 			<li class="nav-item"><a class="nav-link" href="#">방명록</a></li>
 			<li class="nav-item dropdown"><a
 				class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">드롭다운</a>

@@ -10,7 +10,8 @@ String userPwd = request.getParameter("user_pw");
 String userName = request.getParameter("user_name");
 
 BoardHomeDTO dto = new BoardHomeDTO();
-dto.setId(userId);
+
+dto.setId(userId);																																																																																																																																																																					
 dto.setPass(userPwd);
 dto.setName(userName);
 
